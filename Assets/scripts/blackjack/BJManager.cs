@@ -1,28 +1,37 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BJManager : MonoBehaviour
 {
+    [Header("       ----- General Setttings -----")]
     public List<Card> cards;
     public Stack<Card> cardStack;
+    [Header("       ----- Player Settings-----")]
     public List<Transform> PlayerSpawnCardList; 
+    public List<Card> PlayeCardList;
+    [Header("       ----- Dealer Settings-----")]
     public List<Transform> DealerSpawnCardList; 
+    public List<Transform> DealerCardList;
     
     private void Start()
     {
         RestartGame();
+        StartGame();
     }
 
     public void StartGame()
     {
-        
+        RestartGame();
+        TakeCard();
     }
 
     public void TakeCard()
     {
-        
+        Card tempCard = cardStack.Pop();
+        GameObject tempGO = new GameObject();
+        tempGO.AddComponent<SpriteRenderer>();
+        tempGO.GetComponent<SpriteRenderer>().sprite = tempCard.sprite;
+        Instantiate(tempGO, PlayerSpawnCardList[0].position, Quaternion.identity);
     }
     private void RestartGame()
     {
@@ -61,9 +70,4 @@ public enum CardType
     Corazones,
     Treboles,
     Diamantes,
-}
-
-public enum CardValue
-{
-    
 }
