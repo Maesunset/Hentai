@@ -7,12 +7,23 @@ public class BJManager : MonoBehaviour
 {
     public List<Card> cards;
     public Stack<Card> cardStack;
-
+    public List<Transform> PlayerSpawnCardList; 
+    public List<Transform> DealerSpawnCardList; 
+    
     private void Start()
     {
         RestartGame();
     }
-    
+
+    public void StartGame()
+    {
+        
+    }
+
+    public void TakeCard()
+    {
+        
+    }
     private void RestartGame()
     {
         shuffleStack();   
