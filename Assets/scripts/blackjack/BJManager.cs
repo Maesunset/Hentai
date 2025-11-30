@@ -10,9 +10,15 @@ public class BJManager : MonoBehaviour
     public List<Transform> PlayerSpawnCardList; 
     public List<Card> PlayeCardList;
     public int playerSpawnNumber = 0;
+    public int playerTotal;
+    public bool CanTakeCard = true;
     [Header("               ----- Dealer Settings-----")]
     public List<Transform> DealerSpawnCardList; 
-    public List<Transform> DealerCardList;
+    public List<Card> DealerCardList;
+    public int dealerSpawnNumber = 0;
+    public int dealerTotal;
+    public Sprite BgSprite;
+    public GameObject CardBG;
     private void Start()
     {
         StartGame();
@@ -21,31 +27,110 @@ public class BJManager : MonoBehaviour
     public void StartGame()
     {
         RestartGame();
+        DealerHit();
+        DealerHit();
+        // player card Settings
+        TakeCard();
         TakeCard();
     }
-    
     public void TakeCard()
     {
+        if (!CanTakeCard)
+        {
+            return;
+        }
         Card tempCard = cardStack.Pop();
-        GameObject tempGO = new GameObject();
+        GameObject tempGO = Instantiate(new GameObject(), PlayerSpawnCardList[playerSpawnNumber].position, Quaternion.identity);
         tempGO.AddComponent<SpriteRenderer>();
         tempGO.GetComponent<SpriteRenderer>().sprite = tempCard.sprite;
-        tempGO.transform.position = PlayerSpawnCardList[playerSpawnNumber].position;
+        tempGO.name = tempCard.name;
+        PlayeCardList.Add(tempCard);
         if (playerSpawnNumber < PlayerSpawnCardList.Count - 1)
         {
             playerSpawnNumber++;
         }
+        Total();
     }
-
-    public void hitButton()
+    public void DealerHit()
     {
-        TakeCard();
+        Card tempCard = cardStack.Pop(); 
+        GameObject tempGO = Instantiate(new GameObject(), DealerSpawnCardList[dealerSpawnNumber].position, Quaternion.identity);
+        // dealer cards 
+        tempGO.AddComponent<SpriteRenderer>();
+        tempGO.GetComponent<SpriteRenderer>().sprite = tempCard.sprite;
+        tempGO.name = tempCard.name;
+        DealerCardList.Add(tempCard);
+        if (dealerSpawnNumber < DealerSpawnCardList.Count - 1)
+        {
+            dealerSpawnNumber++;
+        }
+        Total();
+    }
+    public void  Total()
+    {
+        playerTotal = 0; 
+        foreach (Card tempCard in PlayeCardList)
+        {
+            playerTotal += tempCard.Value;
+        }
+        dealerTotal = 0;
+        foreach (Card tempCard in DealerCardList)
+        {
+            dealerTotal += tempCard.Value;
+        }
+        CheckWins();
     }
 
-    public void staryButton()
+    public void CheckWins()
+    {
+        if (playerTotal > 21)
+        {
+            DealerWins();
+        }
+        if (playerTotal == 21)
+        {
+            Playerwins();
+        }
+        if (dealerTotal == 21)
+        {
+            DealerWins();
+        }
+        if (playerTotal > dealerTotal && playerTotal < 21)
+        {
+            Playerwins();
+        }
+        if (dealerTotal > playerTotal && dealerTotal < 21)
+        {
+            DealerWins();
+        }
+    }
+
+    public void Playerwins()
     {
         
     }
+    
+    public void DealerWins()
+    {
+        
+    }
+
+    public void DealerGame()
+    {
+        Total();
+    }
+    
+    public void hitButton()
+    {
+        TakeCard();
+        DealerGame();
+    }
+
+    public void stayButton()
+    {
+        CanTakeCard = false;
+    }
+
     private void RestartGame()
     {
         ShuffleStack();   
