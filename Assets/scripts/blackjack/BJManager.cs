@@ -24,14 +24,13 @@ public class BJManager : MonoBehaviour
         {
             cardStack = new Stack<Card>();
             Debug.Log("shuffle cards");
-            List<Card> temp = cards;
             System.Random rng = new System.Random();
-            for (int i = temp.Count - 1; i > 0; i--)
+            for (int i = cards.Count - 1; i > 0; i--)
             {
                 int j = rng.Next(i + 1);
-                Card swap = temp[i];
-                temp[i] = temp[j];
-                temp[j] = swap;
+                Card tempSwap = cards[i];
+                cards[i] = cards[j];
+                cards[j] = tempSwap;
             }
             foreach (Card card in cards)
             {
@@ -51,4 +50,9 @@ public enum CardType
     Corazones,
     Treboles,
     Diamantes,
+}
+
+public enum CardValue
+{
+    
 }
