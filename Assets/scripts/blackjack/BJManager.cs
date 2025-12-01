@@ -15,6 +15,7 @@ public class BJManager : MonoBehaviour
     [Header("               ----- Dealer Settings-----")]
     public List<Transform> DealerSpawnCardList; 
     public List<Card> DealerCardList;
+    public bool canDealerPlay = true;
     public int dealerSpawnNumber = 0;
     public int dealerTotal;
     public Sprite BgSprite;
@@ -32,6 +33,15 @@ public class BJManager : MonoBehaviour
         // player card Settings
         TakeCard();
         TakeCard();
+        Total();
+        if (dealerTotal == 21)
+        {
+            DealerWins();
+        }
+        if (playerTotal == 21)
+        {
+            Playerwins();
+        }
     }
     public void TakeCard()
     {
@@ -50,6 +60,14 @@ public class BJManager : MonoBehaviour
             playerSpawnNumber++;
         }
         Total();
+        if (playerTotal > 21)
+        {
+            DealerWins();
+        }
+        if (playerTotal == 21)
+        {
+            Playerwins();
+        }
     }
     public void DealerHit()
     {
@@ -64,7 +82,6 @@ public class BJManager : MonoBehaviour
         {
             dealerSpawnNumber++;
         }
-        Total();
     }
     public void  Total()
     {
@@ -78,57 +95,73 @@ public class BJManager : MonoBehaviour
         {
             dealerTotal += tempCard.Value;
         }
-        CheckWins();
     }
 
     public void CheckWins()
     {
-        if (playerTotal > 21)
-        {
-            DealerWins();
-        }
         if (playerTotal == 21)
         {
             Playerwins();
+            return;
+        }
+        if (playerTotal > 21)
+        {
+            DealerWins();
+            return; 
         }
         if (dealerTotal == 21)
         {
             DealerWins();
+            return;
         }
         if (playerTotal > dealerTotal && playerTotal < 21)
         {
             Playerwins();
+            return;
         }
-        if (dealerTotal > playerTotal && dealerTotal < 21)
-        {
-            DealerWins();
-        }
+        
     }
 
     public void Playerwins()
     {
-        
+        Debug.Log("Player wins!");
+        canDealerPlay = false;
     }
     
     public void DealerWins()
     {
-        
+        Debug.Log("Dealer Wins!");
+        canDealerPlay = false;
     }
 
     public void DealerGame()
     {
         Total();
+        while (canDealerPlay)
+        {
+            DealerHit();
+            Total();
+            if ((dealerTotal > playerTotal && dealerTotal < 21) || dealerTotal == 21)
+            {
+                DealerWins();
+                break;
+            }
+            if (dealerTotal > 21)
+            {
+                Playerwins();
+            }
+        }
     }
     
     public void hitButton()
     {
         TakeCard();
-        DealerGame();
     }
 
     public void stayButton()
     {
         CanTakeCard = false;
+        DealerGame();
     }
 
     private void RestartGame()
