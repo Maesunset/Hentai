@@ -103,53 +103,28 @@ public class BJManager : MonoBehaviour
         }
     }
 
-    private void CheckWins()
-    {
-        if (playerTotal == 21)
-        {
-            Playerwins();
-            return;
-        }
-        if (playerTotal > 21)
-        {
-            DealerWins();
-            return; 
-        }
-        if (dealerTotal == 21)
-        {
-            DealerWins();
-            return;
-        }
-        if (playerTotal > dealerTotal && playerTotal < 21)
-        {
-            Playerwins();
-            return;
-        }
-        
-    }
-
     private void Playerwins()
     {
-        Debug.Log("Player wins!");
         ResetButton.SetActive(true);
+        statusTextGM.SetActive(true);
+        statusText.text = "you wins";
         canDealerPlay = false;
     }
     
     private void DealerWins()
     {
-        Debug.Log("Dealer Wins!");
         ResetButton.SetActive(true);
+        statusTextGM.SetActive(true);
+        statusText.text = "Dealer wins";
         canDealerPlay = false;
     }
 
     private void DealerGame()
     {
-        Total();
         while (canDealerPlay)
         {
-            DealerHit();
             Total();
-            if ((dealerTotal > playerTotal && dealerTotal < 21) || dealerTotal == 21)
+            if ((dealerTotal >= playerTotal && dealerTotal < 21) || dealerTotal == 21)
             {
                 DealerWins();
                 break;
@@ -157,7 +132,9 @@ public class BJManager : MonoBehaviour
             if (dealerTotal > 21)
             {
                 Playerwins();
+                break;
             }
+            DealerHit();
         }
     }
     
@@ -166,7 +143,7 @@ public class BJManager : MonoBehaviour
         TakeCard();
     }
 
-    public void stayButton()
+    public void StayButton()
     {
         CanTakeCard = false;
         DealerGame();
@@ -178,6 +155,8 @@ public class BJManager : MonoBehaviour
         {
             Destroy(tempCard);
         }
+        CanTakeCard = true;
+        canDealerPlay = true;
         statusTextGM.SetActive(false);
         cardList = new List<GameObject>();
         DealerCardList = new List<Card>();
