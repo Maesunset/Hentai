@@ -11,6 +11,8 @@ public class BJManager : MonoBehaviour
     private List<GameObject> cardList = new List<GameObject>();
     public TextMeshProUGUI statusText;
     public GameObject statusTextGM;
+    public string[] winMessage;
+    public string[] loseMessage;
     [Header("               ----- Player Settings-----")]
     public List<Transform> PlayerSpawnCardList; 
     public List<Card> PlayeCardList;
