@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BJManager : MonoBehaviour
@@ -6,6 +7,10 @@ public class BJManager : MonoBehaviour
     [Header("               ----- General Setttings -----")]
     public List<Card> cards;
     public Stack<Card> cardStack;
+    public GameObject ResetButton;
+    private List<GameObject> cardList = new List<GameObject>();
+    public TextMeshProUGUI statusText;
+    public GameObject statusTextGM;
     [Header("               ----- Player Settings-----")]
     public List<Transform> PlayerSpawnCardList; 
     public List<Card> PlayeCardList;
@@ -22,12 +27,12 @@ public class BJManager : MonoBehaviour
     public GameObject CardBG;
     private void Start()
     {
-        StartGame();
+        RestartGame();
     }
     
-    public void StartGame()
+    private void StartGame()
     {
-        RestartGame();
+        ResetButton.SetActive(false);
         DealerHit();
         DealerHit();
         // player card Settings
@@ -43,7 +48,7 @@ public class BJManager : MonoBehaviour
             Playerwins();
         }
     }
-    public void TakeCard()
+    private void TakeCard()
     {
         if (!CanTakeCard)
         {
@@ -55,6 +60,7 @@ public class BJManager : MonoBehaviour
         tempGO.GetComponent<SpriteRenderer>().sprite = tempCard.sprite;
         tempGO.name = tempCard.name;
         PlayeCardList.Add(tempCard);
+        cardList.Add(tempGO);
         if (playerSpawnNumber < PlayerSpawnCardList.Count - 1)
         {
             playerSpawnNumber++;
@@ -69,21 +75,21 @@ public class BJManager : MonoBehaviour
             Playerwins();
         }
     }
-    public void DealerHit()
+    private void DealerHit()
     {
         Card tempCard = cardStack.Pop(); 
         GameObject tempGO = Instantiate(new GameObject(), DealerSpawnCardList[dealerSpawnNumber].position, Quaternion.identity);
-        // dealer cards 
         tempGO.AddComponent<SpriteRenderer>();
         tempGO.GetComponent<SpriteRenderer>().sprite = tempCard.sprite;
         tempGO.name = tempCard.name;
         DealerCardList.Add(tempCard);
+        cardList.Add(tempGO);
         if (dealerSpawnNumber < DealerSpawnCardList.Count - 1)
         {
             dealerSpawnNumber++;
         }
     }
-    public void  Total()
+    private void  Total()
     {
         playerTotal = 0; 
         foreach (Card tempCard in PlayeCardList)
@@ -97,7 +103,7 @@ public class BJManager : MonoBehaviour
         }
     }
 
-    public void CheckWins()
+    private void CheckWins()
     {
         if (playerTotal == 21)
         {
@@ -122,19 +128,21 @@ public class BJManager : MonoBehaviour
         
     }
 
-    public void Playerwins()
+    private void Playerwins()
     {
         Debug.Log("Player wins!");
+        ResetButton.SetActive(true);
         canDealerPlay = false;
     }
     
-    public void DealerWins()
+    private void DealerWins()
     {
         Debug.Log("Dealer Wins!");
+        ResetButton.SetActive(true);
         canDealerPlay = false;
     }
 
-    public void DealerGame()
+    private void DealerGame()
     {
         Total();
         while (canDealerPlay)
@@ -164,9 +172,21 @@ public class BJManager : MonoBehaviour
         DealerGame();
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
-        ShuffleStack();   
+        foreach (GameObject tempCard in cardList)
+        {
+            Destroy(tempCard);
+        }
+        statusTextGM.SetActive(false);
+        cardList = new List<GameObject>();
+        DealerCardList = new List<Card>();
+        PlayeCardList = new List<Card>();
+        playerSpawnNumber = 0;
+        dealerSpawnNumber = 0;
+        ShuffleStack();
+        ResetButton.SetActive(false);
+        StartGame();
     }
     
     private void ShuffleStack()
