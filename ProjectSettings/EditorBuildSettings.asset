@@ -6,8 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuScene.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/BlackJack.unity
+    guid: 7a3724166cd1b98419d3dab7b6b60125
+  - enabled: 1
+    path: Assets/Scenes/JackPot.unity
+    guid: fedf3c7a1b08d9a4ba4cc1311c6e9237
+  - enabled: 1
+    path: Assets/Scenes/PlusAndLess.unity
+    guid: 57287b7bdd56f1f4298997392a961a08
+  - enabled: 1
+    path: Assets/Scenes/Slot.unity
+    guid: 980237c290bd7fa4d979dc447e2e40ad
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
