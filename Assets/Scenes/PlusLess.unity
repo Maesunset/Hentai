@@ -337,7 +337,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 262403073}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 561776455}
+        m_TargetAssemblyTypeName: PlussLessManager, Assembly-CSharp
+        m_MethodName: Less
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &262403073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,8 +447,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 78f476ac48bf6964581523da6cd90afd, type: 2}
   - {fileID: 11400000, guid: 02e8a5c747299d94d8de89cd42de076b, type: 2}
   cardHolder: {fileID: 1360446872}
+  cardHolderSprite: {fileID: 21300000, guid: e7a071ef4cfc1454eab90396cff48c73, type: 3}
   previeCard: {fileID: 0}
   actualCard: {fileID: 0}
+  revealTime: 0.5
 --- !u!1 &870969435
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +804,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1682677509}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 561776455}
+        m_TargetAssemblyTypeName: PlussLessManager, Assembly-CSharp
+        m_MethodName: Plus
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1682677509
 MonoBehaviour:
   m_ObjectHideFlags: 0
