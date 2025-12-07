@@ -15,6 +15,7 @@ public class CandyManager : MonoBehaviour
     public int maxInRow = 4;
     public GameObject StopGameObject;
     public bool win;
+    public bool canRoll=true;
     
     public GirlLove actualGirlLove;
     
@@ -150,11 +151,13 @@ public class CandyManager : MonoBehaviour
         {
             actualGirlLove.SubtractHappiness();
         }
+        canRoll = true;
         yield return null;
 }
 
     public void Reroll()
     {
+        canRoll = false;
         StartCoroutine(spawnCandy());
     }
 

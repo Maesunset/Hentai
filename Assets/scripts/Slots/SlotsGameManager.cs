@@ -12,6 +12,7 @@ public class SlotsGameManager : MonoBehaviour
     public float delayTime;
     public List<int> SlotAnswersList;
     public bool canRool = true;
+    public GirlLove girlLove;
     
     public void Roll()
     {
@@ -67,14 +68,20 @@ public class SlotsGameManager : MonoBehaviour
             case 1:
                 // ninguna igual
                 Debug.Log("bad roll");
+                girlLove.SubtractHappiness();
                 break;
             case 2:
                 // dos iguales
                 Debug.Log("medium Roll");
+                girlLove.AddHappiness();
                 break;
             case 3:
                 // big Win
                 Debug.Log("Big Win");
+                girlLove.AddHappiness();
+                girlLove.AddHappiness();
+                girlLove.AddHappiness();
+                girlLove.AddHappiness();
                 break;
         }
     }

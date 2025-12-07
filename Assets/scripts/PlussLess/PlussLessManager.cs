@@ -11,14 +11,14 @@ public class PlussLessManager : MonoBehaviour
     public Card previeCard;
     public Card actualCard;
     public float revealTime;
+    public GirlLove girlLove;
+    public int treshold;
 
     private void Start()
     { 
         int randomPrevieCard = Random.Range(0, cardList.Count);
         actualCard = cardList[randomPrevieCard];
-        Debug.Log(actualCard.name);
         cardHolder.GetComponent<SpriteRenderer>().sprite = actualCard.sprite;
-        
     }
 
     IEnumerator Reroll()
@@ -36,19 +36,24 @@ public class PlussLessManager : MonoBehaviour
     {
         StartCoroutine(Reroll());
         StartCoroutine(PlussEnumerator());
-
+        Debug.Log("plus");
     }
 
     IEnumerator PlussEnumerator()
     {
-        yield return new WaitForSeconds(revealTime);
+        yield return new WaitForSeconds(revealTime + 0.2f);
         if (actualCard.Value > previeCard.Value)
         {
             Debug.Log("win");
+            if ((actualCard.Value - previeCard.Value) > treshold)
+            {
+                girlLove.AddHappiness();
+            }
         }
         else
         {
             Debug.Log("Lose");
+            girlLove.SubtractHappiness();
         }
     }
 
@@ -56,19 +61,25 @@ public class PlussLessManager : MonoBehaviour
     {
         StartCoroutine(Reroll());
         StartCoroutine(LessEnumerator());
+        Debug.Log("less");
 
     }
 
     IEnumerator LessEnumerator()
     {
-        yield return new WaitForSeconds(revealTime);
+        yield return new WaitForSeconds(revealTime + 0.2f);
         if (actualCard.Value < previeCard.Value)
         {
             Debug.Log("win");
+            if ((previeCard.Value - actualCard.Value) > treshold)
+            {
+                girlLove.AddHappiness();
+            }
         }
         else
         {
             Debug.Log("Lose");
+            girlLove.SubtractHappiness();
         }
     }
 }
