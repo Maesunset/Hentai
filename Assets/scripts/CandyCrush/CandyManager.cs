@@ -14,6 +14,9 @@ public class CandyManager : MonoBehaviour
     public int DelayTime;
     public int maxInRow = 4;
     public GameObject StopGameObject;
+    public bool win;
+    
+    public GirlLove actualGirlLove;
     
     IEnumerator spawnCandy()
     {
@@ -42,86 +45,54 @@ public class CandyManager : MonoBehaviour
     }
 
    IEnumerator saveList()
-{
-    candysList = new List<List<GameObject>>();
-    bool iteration = true;
-
-    while (iteration)
     {
-        iteration = false; 
-        candysList.Clear();
-        for (int i = 0; i < heigth; i++)
+        yield return new WaitForSeconds(0.5f);
+        win = false;
+        candysList = new List<List<GameObject>>();
+        bool iteration = true;
+        while (iteration)
         {
-            List<GameObject> tempList = new List<GameObject>();
-            foreach (var spawns in SpawnPoints)
+            iteration = false; 
+            candysList.Clear();
+            for (int i = 0; i < heigth; i++)
             {
-                int spawnsChild = spawns.transform.childCount;
-                if (spawnsChild > i)
+                List<GameObject> tempList = new List<GameObject>();
+                foreach (var spawns in SpawnPoints)
                 {
-                    Transform tempChild = spawns.transform.GetChild(i);
-                    GameObject TempChildGO = tempChild.gameObject;
-                    tempList.Add(TempChildGO);
-                }
-            }
-            candysList.Add(tempList);
-        }
-
-        bool destroyedSomething = false;
-        for (int row = 0; row < candysList.Count; row++)
-        {
-            List<GameObject> currentRow = candysList[row];
-            int count = 1;
-
-            for (int col = 1; col < currentRow.Count; col++)
-            {
-                IconType prevIcon = currentRow[col - 1].GetComponent<CandyType>().icon;
-                IconType currentIcon = currentRow[col].GetComponent<CandyType>().icon;
-
-                if (prevIcon == currentIcon)
-                {
-                    count++;
-                    if (count >= maxInRow)
+                    int spawnsChild = spawns.transform.childCount;
+                    if (spawnsChild > i)
                     {
-                        for (int k = col - count + 1; k <= col; k++)
-                        {
-                            GameObject toDestroy = currentRow[k];
-                            if (toDestroy != null)
-                            {
-                                Destroy(toDestroy);
-                                destroyedSomething = true;
-                            }
-                        }
+                        Transform tempChild = spawns.transform.GetChild(i);
+                        GameObject TempChildGO = tempChild.gameObject;
+                        tempList.Add(TempChildGO);
                     }
                 }
-                else
-                {
-                    count = 1;
-                }
+                candysList.Add(tempList);
             }
-        }
-        int maxCols = SpawnPoints.Count;
-        for (int col = 0; col < maxCols; col++)
-        {
-            int count = 1;
-            for (int row = 1; row < candysList.Count; row++)
+            bool destroyedSomething = false;
+            for (int row = 0; row < candysList.Count; row++)
             {
-                if (col < candysList[row - 1].Count && col < candysList[row].Count)
+                List<GameObject> currentRow = candysList[row];
+                int count = 1;
+        
+                for (int col = 1; col < currentRow.Count; col++)
                 {
-                    IconType prevIcon = candysList[row - 1][col].GetComponent<CandyType>().icon;
-                    IconType currentIcon = candysList[row][col].GetComponent<CandyType>().icon;
-
+                    IconType prevIcon = currentRow[col - 1].GetComponent<CandyType>().icon;
+                    IconType currentIcon = currentRow[col].GetComponent<CandyType>().icon;
+        
                     if (prevIcon == currentIcon)
                     {
                         count++;
                         if (count >= maxInRow)
                         {
-                            for (int k = row - count + 1; k <= row; k++)
+                            for (int k = col - count + 1; k <= col; k++)
                             {
-                                GameObject toDestroy = candysList[k][col];
+                                GameObject toDestroy = currentRow[k];
                                 if (toDestroy != null)
                                 {
                                     Destroy(toDestroy);
                                     destroyedSomething = true;
+                                    win = true;
                                 }
                             }
                         }
@@ -132,18 +103,54 @@ public class CandyManager : MonoBehaviour
                     }
                 }
             }
+            int maxCols = SpawnPoints.Count;
+            for (int col = 0; col < maxCols; col++)
+            {
+                int count = 1;
+                for (int row = 1; row < candysList.Count; row++)
+                {
+                    if (col < candysList[row - 1].Count && col < candysList[row].Count)
+                    {
+                        IconType prevIcon = candysList[row - 1][col].GetComponent<CandyType>().icon;
+                        IconType currentIcon = candysList[row][col].GetComponent<CandyType>().icon;
+        
+                        if (prevIcon == currentIcon)
+                        {
+                            count++;
+                            if (count >= maxInRow)
+                            {
+                                for (int k = row - count + 1; k <= row; k++)
+                                {
+                                    GameObject toDestroy = candysList[k][col];
+                                    if (toDestroy != null)
+                                    {
+                                        Destroy(toDestroy);
+                                        destroyedSomething = true;
+                                        win = true;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            count = 1;
+                        }
+                    }
+                }
+            }
+            if (destroyedSomething)
+            {
+                iteration = true;
+                actualGirlLove.AddHappiness();
+                actualGirlLove.AddHappiness();
+            }
+            yield return new WaitForSeconds(0.5f);
         }
-
-        // repetir el while solo si se destruyó una secuencia
-        if (destroyedSomething)
+        if (!win)
         {
-            iteration = true;
+            actualGirlLove.SubtractHappiness();
         }
-
-        yield return new WaitForSeconds(0.3f);
-    }
-
-    yield return null;
+        yield return null;
 }
 
     public void Reroll()
