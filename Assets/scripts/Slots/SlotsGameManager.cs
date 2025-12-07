@@ -73,10 +73,14 @@ public class SlotsGameManager : MonoBehaviour
             case 2:
                 // dos iguales
                 Debug.Log("medium Roll");
+                girlLove.AddHappiness();
                 break;
             case 3:
                 // big Win
                 Debug.Log("Big Win");
+                girlLove.AddHappiness();
+                girlLove.AddHappiness();
+                girlLove.AddHappiness();
                 girlLove.AddHappiness();
                 break;
         }
