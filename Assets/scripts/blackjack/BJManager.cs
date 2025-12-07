@@ -11,6 +11,7 @@ public class BJManager : MonoBehaviour
     private List<GameObject> cardList = new List<GameObject>();
     public TextMeshProUGUI statusText;
     public GameObject statusTextGM;
+    public GirlLove ActuaGirlLove;
     public string[] winMessage;
     public string[] loseMessage;
     [Header("               ----- Player Settings-----")]
@@ -107,6 +108,7 @@ public class BJManager : MonoBehaviour
 
     private void Playerwins()
     {
+        ActuaGirlLove.AddHappiness();
         ResetButton.SetActive(true);
         statusTextGM.SetActive(true);
         statusText.text = "you wins";
@@ -115,6 +117,7 @@ public class BJManager : MonoBehaviour
     
     private void DealerWins()
     {
+        ActuaGirlLove.SubtractHappiness();
         ResetButton.SetActive(true);
         statusTextGM.SetActive(true);
         statusText.text = "Dealer wins";
