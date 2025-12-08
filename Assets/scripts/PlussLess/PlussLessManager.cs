@@ -13,6 +13,7 @@ public class PlussLessManager : MonoBehaviour
     public float revealTime;
     public GirlLove girlLove;
     public int treshold;
+    public SoundManager soundManager;
 
     private void Start()
     { 
@@ -23,6 +24,7 @@ public class PlussLessManager : MonoBehaviour
 
     IEnumerator Reroll()
     {
+        soundManager.BotonPlay();
         cardHolder.GetComponent<SpriteRenderer>().sprite = cardHolderSprite;
         yield return new WaitForSeconds(revealTime);
         previeCard = actualCard;
@@ -48,11 +50,13 @@ public class PlussLessManager : MonoBehaviour
             if ((actualCard.Value - previeCard.Value) > treshold)
             {
                 girlLove.AddHappiness();
+                soundManager.GoodPlay();
             }
         }
         else
         {
             Debug.Log("Lose");
+            soundManager.BadPlay();
             girlLove.SubtractHappiness();
         }
     }
@@ -73,12 +77,14 @@ public class PlussLessManager : MonoBehaviour
             Debug.Log("win");
             if ((previeCard.Value - actualCard.Value) > treshold)
             {
+                soundManager.GoodPlay();
                 girlLove.AddHappiness();
             }
         }
         else
         {
             Debug.Log("Lose");
+            soundManager.BadPlay();
             girlLove.SubtractHappiness();
         }
     }

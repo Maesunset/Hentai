@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8944589997417304700
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 03-laughter_{-8944589997417304700}
+  m_AudioClip: {fileID: 8300000, guid: a56404967ae71964e8676cfe64c24b38, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-8218671027225105432
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 01-laughter_{-8218671027225105432}
+  m_AudioClip: {fileID: 8300000, guid: 11e470b5d2552804e8985eb93d75039e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4507147768999643629
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: damaged1_{-4507147768999643629}
+  m_AudioClip: {fileID: 8300000, guid: 3e9df262530c6f4468e6969c59c66a20, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3983555455539334888
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: anime_ah_{-3983555455539334888}
+  m_AudioClip: {fileID: 8300000, guid: 297e654661dff7a4da0f578ac7f14368, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-874775137250639947
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: damaged2_{-874775137250639947}
+  m_AudioClip: {fileID: 8300000, guid: 0b9dc08975881384fa6c58eb0fc50e59, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4085526887150824362
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: healed3_{4085526887150824362}
+  m_AudioClip: {fileID: 8300000, guid: d2f853161217d9249a8e420a4b0ea8e8, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4828523019860913779
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 02-laughter_{4828523019860913779}
+  m_AudioClip: {fileID: 8300000, guid: 88e66cd0f899b0341bd8d7c35d187376, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5537047482976796096
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: small_single_laugh_{5537047482976796096}
+  m_AudioClip: {fileID: 8300000, guid: b96b9fd99aa02834f8b2f29391af488c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5903516411078365530
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: healed4_{5903516411078365530}
+  m_AudioClip: {fileID: 8300000, guid: f9b4548446b59b84dbb35bb331a8d26c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Good Voices
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -8218671027225105432}
+  - {fileID: 4828523019860913779}
+  - {fileID: -8944589997417304700}
+  - {fileID: -3983555455539334888}
+  - {fileID: -4507147768999643629}
+  - {fileID: -874775137250639947}
+  - {fileID: 6584954307223384400}
+  - {fileID: 6865525010790058780}
+  - {fileID: 4085526887150824362}
+  - {fileID: 5903516411078365530}
+  - {fileID: 7416208224526978749}
+  - {fileID: 5537047482976796096}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 1
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &6584954307223384400
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: damaged3_{6584954307223384400}
+  m_AudioClip: {fileID: 8300000, guid: 59eddad894fe85145a28d048a9410ddc, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &6865525010790058780
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: girl-laugh-149491_{6865525010790058780}
+  m_AudioClip: {fileID: 8300000, guid: db71203667c3d3d4d9d3020c099c9616, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &7416208224526978749
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: laugh_{7416208224526978749}
+  m_AudioClip: {fileID: 8300000, guid: 6230f2430da5784449703f5e3aeed3ba, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

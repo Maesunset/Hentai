@@ -12,8 +12,7 @@ public class BJManager : MonoBehaviour
     public TextMeshProUGUI statusText;
     public GameObject statusTextGM;
     public GirlLove ActuaGirlLove;
-    public string[] winMessage;
-    public string[] loseMessage;
+    public SoundManager soundManager;
     [Header("               ----- Player Settings-----")]
     public List<Transform> PlayerSpawnCardList; 
     public List<Card> PlayeCardList;
@@ -113,6 +112,7 @@ public class BJManager : MonoBehaviour
         statusTextGM.SetActive(true);
         statusText.text = "you wins";
         canDealerPlay = false;
+        soundManager.GoodPlay();
     }
     
     private void DealerWins()
@@ -122,6 +122,7 @@ public class BJManager : MonoBehaviour
         statusTextGM.SetActive(true);
         statusText.text = "Dealer wins";
         canDealerPlay = false;
+        soundManager.BadPlay();
     }
 
     private void DealerGame()
@@ -146,16 +147,19 @@ public class BJManager : MonoBehaviour
     public void hitButton()
     {
         TakeCard();
+        soundManager.BotonPlay();
     }
 
     public void StayButton()
     {
         CanTakeCard = false;
         DealerGame();
+        soundManager.BotonPlay();
     }
 
     public void RestartGame()
     {
+        soundManager.BotonPlay();
         foreach (GameObject tempCard in cardList)
         {
             Destroy(tempCard);

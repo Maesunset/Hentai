@@ -13,12 +13,15 @@ public class SlotsGameManager : MonoBehaviour
     public List<int> SlotAnswersList;
     public bool canRool = true;
     public GirlLove girlLove;
+    public SoundManager soundManager;
+    public AudioSource slotAudioSource;
+    public AudioSource checkSource;
     
     public void Roll()
     {
         if (canRool)
         {
-            Debug.Log("Rool");
+            soundManager.BotonPlay();
             foreach (Material mat in SlotsMaterias)
             {
                 mat.SetFloat("_Gamble",1);
@@ -30,6 +33,7 @@ public class SlotsGameManager : MonoBehaviour
 
     IEnumerator  stop()
     {
+        slotAudioSource.Play();
         SlotAnswersList.Clear();
         SlotAnswersList = new List<int>();
         canRool = false;
@@ -37,12 +41,14 @@ public class SlotsGameManager : MonoBehaviour
         foreach (Material mat in SlotsMaterias)
         {
             yield return new WaitForSeconds(delayTime);
+            
             int random = Random.Range(0,maxOptions);
             mat.SetFloat("_Choice",random);
             SlotAnswersList.Add(random);
             mat.SetFloat("_Gamble",0);
+            checkSource.Play();
         }
-        canRool = true;
+        
         Solution();
         yield return null;
     }
@@ -66,23 +72,22 @@ public class SlotsGameManager : MonoBehaviour
         switch (sameAnswerds)
         {
             case 1:
-                // ninguna igual
-                Debug.Log("bad roll");
+                soundManager.BadPlay();
                 girlLove.SubtractHappiness();
                 break;
             case 2:
-                // dos iguales
-                Debug.Log("medium Roll");
+                soundManager.GoodPlay();
                 girlLove.AddHappiness();
                 break;
             case 3:
-                // big Win
-                Debug.Log("Big Win");
+                soundManager.GoodPlay();
                 girlLove.AddHappiness();
                 girlLove.AddHappiness();
                 girlLove.AddHappiness();
                 girlLove.AddHappiness();
                 break;
         }
+        canRool = true;
+        slotAudioSource.Stop();
     }
 }
