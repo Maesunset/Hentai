@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-8210339258888412359
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop6_{-8210339258888412359}
+  m_AudioClip: {fileID: 8300000, guid: 2938cf1403a4cd14eb3122e44196ac7d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4468639046007054813
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop2_{-4468639046007054813}
+  m_AudioClip: {fileID: 8300000, guid: 590998a2d2445bf4487cc8b33c068f7c, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4404558577479777371
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop1_{-4404558577479777371}
+  m_AudioClip: {fileID: 8300000, guid: b85469862ab999845a8dbb001917c164, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-3374456018303484828
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop8_{-3374456018303484828}
+  m_AudioClip: {fileID: 8300000, guid: 09f87e498936ae841a497f4cccdf3b93, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &614611595454018287
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop7_{614611595454018287}
+  m_AudioClip: {fileID: 8300000, guid: 0fd62ec62ddfb9c459f07698eb99fed5, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &671014010580053652
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop4_{671014010580053652}
+  m_AudioClip: {fileID: 8300000, guid: 6a6a8871a2cd70544aa7d9b6a31fa309, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &1095767654546251281
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop3_{1095767654546251281}
+  m_AudioClip: {fileID: 8300000, guid: 6eb17333e29c9d349a83d1bfe45b5e4f, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2136358165995621524
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop9_{2136358165995621524}
+  m_AudioClip: {fileID: 8300000, guid: 9aa38da5a30959648aabd4c15e73a49e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Good Voices
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: -4404558577479777371}
+  - {fileID: -4468639046007054813}
+  - {fileID: 1095767654546251281}
+  - {fileID: 671014010580053652}
+  - {fileID: 8661370621688840674}
+  - {fileID: -8210339258888412359}
+  - {fileID: 614611595454018287}
+  - {fileID: -3374456018303484828}
+  - {fileID: 2136358165995621524}
+  - {fileID: 7869932405545506370}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 1
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7869932405545506370
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop10_{7869932405545506370}
+  m_AudioClip: {fileID: 8300000, guid: c31f32a05709cd645b973d14af3ee1f3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &8661370621688840674
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: pop5_{8661370621688840674}
+  m_AudioClip: {fileID: 8300000, guid: ee46f0fe5ac8f1c4e91d35914da09c27, type: 3}
+  m_Volume: 0
+  m_Enabled: 1

@@ -15,7 +15,9 @@ public class CandyManager : MonoBehaviour
     public int maxInRow = 4;
     public GameObject StopGameObject;
     public bool win;
-    public bool canRoll=true;
+    public bool canRoll = true;
+    public SoundManager soundManager;
+    public AudioSource pop;
     
     public GirlLove actualGirlLove;
     
@@ -29,9 +31,9 @@ public class CandyManager : MonoBehaviour
         StopGameObject.SetActive(true);
         for (int i = 0; i < heigth; i++)
         {
-            List<GameObject> tempList = new List<GameObject>();
             for (int j = 0; j < 8; j++)
             {
+                pop.Play();
                 int randomSprite = Random.Range(0, candySprites.Count);
                 GameObject Temp = candyPrefab;
                 Temp.GetComponent<SpriteRenderer>().sprite = candySprites[randomSprite];
@@ -142,6 +144,7 @@ public class CandyManager : MonoBehaviour
             if (destroyedSomething)
             {
                 iteration = true;
+                soundManager.GoodPlay();
                 actualGirlLove.AddHappiness();
                 actualGirlLove.AddHappiness();
             }
@@ -149,6 +152,7 @@ public class CandyManager : MonoBehaviour
         }
         if (!win)
         {
+            soundManager.BadPlay();
             actualGirlLove.SubtractHappiness();
         }
         canRoll = true;
@@ -158,6 +162,7 @@ public class CandyManager : MonoBehaviour
     public void Reroll()
     {
         canRoll = false;
+        soundManager.BotonPlay();
         StartCoroutine(spawnCandy());
     }
 
